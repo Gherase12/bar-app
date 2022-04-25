@@ -1,86 +1,178 @@
-import type { NextPage } from 'next'
+import type { NextPage, GetServerSideProps } from 'next'
+import { useRef, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
-const Home: NextPage = () => {
+import { sanityClient, urlFor } from '../sanity'
+import {
+  BsInstagram,
+  BsTwitter,
+  BsFacebook,
+  BsFillArrowUpSquareFill,
+} from 'react-icons/bs'
+import Header from './../components/Header'
+import Category from './../components/Category'
+import { Products } from '../typings'
+
+interface Props {
+  products: Products[]
+}
+
+const Home = ({ products }: Props) => {
+  console.log(products)
+  const colors = ['#8E8E20', '#F60404', '#58A9E6', '#F635F0']
+
+  const drinksRef = useRef<HTMLDivElement>(null)
+  const aboutRef = useRef<HTMLDivElement>(null)
+  const contactRef = useRef<HTMLDivElement>(null)
+  const arrowRef = useRef<HTMLDivElement>(null)
+
+  const Categories = [
+    { name: 'Wisky', color: '#8E8E20' },
+    { name: 'Vodka', color: '#F60404' },
+    { name: 'Gin', color: '#58A9E6' },
+    { name: 'Champagne', color: '#F635F0' },
+    
+  ]
+  // products.forEach((p)=>{
+  //   console.log(p.category[0])
+  // })
+  const getProducts = (name:string)=> products.filter((p)=> p.category[0] == name )
+
+  // console.log(getProducts("Wisky"))
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit={{ opacity: 0 }}
+      className="relative h-auto overflow-hidden bg-black"
+    >
       <Head>
-        <title>Create Next App</title>
+        <title>home</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+      <div className="absolute w-full ">
+        <Header
+          drinksRef={drinksRef}
+          aboutRef={aboutRef}
+          contactRef={contactRef}
+        />
+      </div>
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
-
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div className="relative ">
+        <img
+          src="/bar.jpg"
+          alt="bar"
+          className=" object-cover object-bottom lg:w-full xl:h-[1000px] "
+        />
+        <motion.div
+          animate={{ scale: 1 }}
+          initial={{ scale: 0 }}
+          className="absolute bottom-[60px] left-0  flex h-[40%] w-[40%] items-center justify-center bg-black/70 md:bottom-[150px] xl:bottom-[360px]"
         >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
-    </div>
+          <p className="text-center text-[22px] text-darkYellow text-shadow-yellow lg:text-[40px] 2xl:text-[90px] ">
+            EXPLORE. DREAM. DESCOVER. TASTE.
+          </p>
+        </motion.div>
+        {/* bottels */}
+
+        <motion.img
+          whileInView={{ rotate: 115, opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 3 }}
+          initial={{ rotate: 90, opacity: 0 }}
+          src="/jd.png"
+          alt="jack-daniels"
+          className="absolute -left-[45px] top-[180px] z-10  w-[70%] rotate-90 md:top-[280px] lg:top-[380px] xl:-left-[195px] xl:top-[480px] 2xl:top-[380px]"
+        />
+        <motion.img
+          animate={{ rotate: -115, opacity: 1 }}
+          transition={{ duration: 3 }}
+          initial={{ rotate: -90, opacity: 0 }}
+          src="/jb.png"
+          alt="jb"
+          className="absolute   -right-[45px]  top-[180px] w-[70%] -rotate-90 md:top-[280px] lg:top-[380px] xl:top-[480px] 2xl:top-[230px]"
+        />
+      </div>
+
+      <div ref={drinksRef}>
+        <h1 className=" z-50 my-[60px] mt-[100px]  text-center text-[19px] text-darkYellow text-shadow-yellow  md:mt-[200px] md:text-[90px]">
+          Choose from a variety of drinks
+        </h1>
+        <div>
+          {Categories.map((c, i) => (
+            <Category key={i} title={c.name}  color={c.color} products={getProducts(c.name)}  />
+          ))}
+        </div>
+      </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 3 }}
+        ref={aboutRef}
+      >
+        <h1 className="text-center text-[43px] text-darkYellow text-shadow-yellow lg:mt-[100px] lg:text-[108px]">
+          ABOUT US
+        </h1>
+        <p className="  my-[30px]  mx-auto h-[367px] w-[256px] overflow-scroll text-center text-darkYellow scrollbar-hide lg:h-[614px] lg:w-[930px] lg:text-[30px]">
+          Welcome to BAR STATION, your number one source for alcoholic
+          beverages. Founded in 2014 , Bar station has come a long way from its
+          beginnings in a [starting location, ie: home office, toolshed,
+          Houston, TX.]. When [store founder] first started out, his/her passion
+          for [passion of founder, ie: helping other parents be more
+          eco-friendly, providing the best equipment for his fellow musicians]
+          drove him to [action, ie: do intense research, quit her day job], and
+          gave him the impetus to turn hard work and inspiration into to a
+          booming online store. We now serve customers all over [place, ie: the
+          US, the world, the Austin area], and are thrilled to be a part of the
+          [adjective, ie: quirky, eco- friendly, fair trade] wing of the
+          [industry type, ie: fashion, baked goods, watches] industry.
+        </p>
+      </motion.div>
+
+      <div ref={contactRef}>
+        <h1 className="text-center text-[43px] text-darkYellow text-shadow-yellow lg:mt-[100px] lg:text-[108px]">
+          FIND US
+        </h1>
+        <div className="my-[50px] flex justify-center space-x-4 lg:text-[108px]">
+          <BsInstagram className="text-[40px] text-darkYellow text-shadow-yellow" />
+          <BsTwitter className="text-[40px] text-darkYellow text-shadow-yellow" />
+          <BsFacebook className="text-[40px] text-darkYellow text-shadow-yellow" />
+        </div>
+      </div>
+    </motion.div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const query = `*[_type =="product" ]{
+    title,
+    slug{
+      current
+    },
+      defaultProductVariant{
+      title,
+      price,
+      volume,
+      Avol,
+      images[0]{
+        asset,
+      },
+    },
+    "category":categories[]->title
+}`
+
+  const products = await sanityClient.fetch(query)
+
+  return {
+    props: {
+      products,
+    },
+  }
 }
 
 export default Home
