@@ -15,10 +15,10 @@ import Category from '../components/Category'
 
 
 const Home = ({ products }) => {
-  const drinksRef = useRef < HTMLDivElement > null
-  const aboutRef = useRef < HTMLDivElement > null
-  const contactRef = useRef < HTMLDivElement > null
-  const arrowRef = useRef < HTMLDivElement > null
+  const drinksRef = useRef(null)
+  const aboutRef = useRef(null)
+  const contactRef = useRef(null)
+  
 
   const Categories = [
     { name: 'Wisky', color: '#8E8E20' },
