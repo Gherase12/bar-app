@@ -11,8 +11,8 @@ const Category = ({title , products , color }) => {
   
   
 
-  const textColor = `text-[${title}]`
-  console.log(products)
+  
+ 
 
   return (
     <div className="mt-[10px] h-[364px]  w-full text-white  lg:h-[653px]">
@@ -21,7 +21,7 @@ const Category = ({title , products , color }) => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 3 }}
-        className={`text-center text-[39px] ${textColor} text-shadow-yellow md:text-[60px] `}
+        className={`text-center text-[39px]  text-shadow-yellow md:text-[60px] `}
         // style={{textColor: "lightblue"}}
       >
         {title.toUpperCase()}
@@ -70,8 +70,7 @@ const Category = ({title , products , color }) => {
             slidesPerView: 4,
           },
         }}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
+        
         className="mt-[70px]  w-[355px] md:w-[600px] lg:w-[1100px] xl:w-[1500px]"
       >
         {products.map((p ,i)=>(

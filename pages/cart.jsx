@@ -13,7 +13,7 @@ function cart() {
     (acc, el) => acc + el.defaultProductVariant.price * el.count,
     0
   )
-  console.log(cartItems)
+  
   return (
     <div className="relative h-screen overflow-hidden bg-black ">
       <BsFillArrowLeftCircleFill
@@ -28,16 +28,18 @@ function cart() {
           {cartItems?.length == 0 ? (
             <div className="text-white lg:text-[20px]">The cart is empty</div>
           ) : (
-            cartItems?.map((p, i) => (
-              <CartItem
-                key={i}
-                name={p.title}
-                price={p.defaultProductVariant.price}
-                img={urlFor(p.defaultProductVariant.images)}
-                count={p.count}
-                product={p}
-              />
-            ))
+            <div>
+              {cartItems?.map((p, i) => (
+                <CartItem
+                  key={i}
+                  name={p.title}
+                  price={p.defaultProductVariant.price}
+                  img={urlFor(p.defaultProductVariant.images)}
+                  count={p.count}
+                  product={p}
+                />
+              ))}
+            </div>
           )}
         </div>
 

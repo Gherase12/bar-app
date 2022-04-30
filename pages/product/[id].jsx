@@ -28,7 +28,7 @@ function product({ product }) {
   //   ],
   // }
 
-  console.log(product)
+  
 
   const [rating, setRating] = useState(product.defaultProductVariant.rating)
   const [hover, setHover] = useState(0)
@@ -236,7 +236,7 @@ function product({ product }) {
 export default product
 
 export const getServerSideProps = async ({ params }) => {
-  console.log(params)
+ 
   const query = `*[_type =="product" && slug.current == $id][0]{
     _id,
     title,

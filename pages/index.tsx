@@ -20,8 +20,8 @@ interface Props {
 }
 
 const Home = ({ products }: Props) => {
-  console.log(products)
-  const colors = ['#8E8E20', '#F60404', '#58A9E6', '#F635F0']
+  
+  
 
   const drinksRef = useRef<HTMLDivElement>(null)
   const aboutRef = useRef<HTMLDivElement>(null)
@@ -35,12 +35,10 @@ const Home = ({ products }: Props) => {
     { name: 'Champagne', color: '#F635F0' },
     
   ]
-  // products.forEach((p)=>{
-  //   console.log(p.category[0])
-  // })
+  
   const getProducts = (name:string)=> products.filter((p)=> p.category[0] == name )
 
-  // console.log(getProducts("Wisky"))
+ 
   return (
     <motion.div
       initial="initial"

@@ -9,7 +9,7 @@ import { selectCartItems } from '../redux/features/cart/cartSlice';
 
 const Header = ({ drinksRef , aboutRef , contactRef}) => {
   const cartItems = useSelector(selectCartItems)
- console.log(cartItems)
+ 
   const [open, setOpen] = useState(false)
 
   const scrollToElement =(Ref)=>{

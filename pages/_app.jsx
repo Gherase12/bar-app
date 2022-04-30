@@ -1,9 +1,10 @@
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import store from '../redux/app/store'
 import { saveState } from '../redux/localStorage';
-import throttle from 'lodash.throttle';
+import  throttle  from 'lodash.throttle';
+
+
 
 store.subscribe(
   throttle(() => {
@@ -12,7 +13,7 @@ store.subscribe(
     });
   }, 1000));
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }) {
   return(
     <Provider store={store}>
       <Component {...pageProps} />
