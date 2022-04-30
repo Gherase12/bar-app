@@ -4,9 +4,14 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import { MdClose } from 'react-icons/md'
 import { BsCart2 } from 'react-icons/bs'
 import { useRouter } from 'next/router';
+import { useSelector } from 'react-redux';
+import { selectCartItems } from '../redux/features/cart/cartSlice';
 
 const Header = ({ drinksRef , aboutRef , contactRef}) => {
+  const cartItems = useSelector(selectCartItems)
+ console.log(cartItems)
   const [open, setOpen] = useState(false)
+
   const scrollToElement =(Ref)=>{
     setOpen(false)
     Ref.current.scrollIntoView({behavior: "smooth"})
@@ -20,7 +25,13 @@ const Header = ({ drinksRef , aboutRef , contactRef}) => {
         <button onClick={()=>scrollToElement(drinksRef)} >Drinks</button>
         <button onClick={()=>scrollToElement(aboutRef)} >About Us</button>
         <button onClick={()=>scrollToElement(contactRef)} >Find Us</button>
+        <div className="relative">
+          {cartItems.length !=0 && (
+          <div className="absolute rounded-full bg-darkYellow w-[15px] h-[15px] text-[10px] font-bold text-center text-black left-[25px]" >{cartItems?.length}</div>
+          )}
+          
         <BsCart2 className=" mt-[5px] text-[30px] text-darkYellow " onClick={()=>router.push("/cart")} />
+        </div>
       </div>
       <GiHamburgerMenu className="absolute left-[20px] text-[20px] md:hidden " onClick={()=> setOpen(true)} />
       <BsCart2 className="absolute right-[20px] text-[20px] md:hidden  "  onClick={()=>router.push("/cart")} />

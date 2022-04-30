@@ -1,15 +1,19 @@
 import { GetServerSideProps } from 'next'
 import React, { useState } from 'react'
 import { AiFillStar } from 'react-icons/ai'
-import { BsFillArrowLeftCircleFill } from 'react-icons/bs'
+import { BsFillArrowLeftCircleFill , BsCart2} from 'react-icons/bs'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { sanityClient } from '../../sanity'
 import { urlFor } from './../../sanity';
+import { useDispatch, useSelector } from 'react-redux'
+import {addToCart, selectCartItems} from "../../redux/features/cart/cartSlice"
 
 
 function product({ product }) {
+  const dispatch = useDispatch()
   const router = useRouter()
+  const cartItems = useSelector(selectCartItems)
   // const product = {
   //   name: "JACK DANIEL'S",
 
@@ -60,6 +64,16 @@ function product({ product }) {
       exit={{ opacity: 0 }}
       className="relative h-auto overflow-hidden bg-black "
     >
+      <div className="absolute top-[20px] right-[20px]">
+
+       <div className="relative">
+          {cartItems.length !=0 && (
+          <div className="absolute rounded-full bg-darkYellow w-[15px] h-[15px] text-[10px] font-bold text-center text-black left-[25px]" >{cartItems?.length}</div>
+          )}
+          
+        <BsCart2 className=" mt-[5px] text-[30px] text-darkYellow " onClick={()=>router.push("/cart")} />
+        </div>
+      </div>
       <BsFillArrowLeftCircleFill
         className="absolute top-[20px] left-[20px] text-[40px] text-darkYellow"
         onClick={() => router.push('/')}
@@ -206,6 +220,8 @@ function product({ product }) {
            
           </motion.div>
           <motion.button
+          
+            onClick={()=>dispatch(addToCart(product))}
             variants={fadeInUp}
             className=" h-[50px] w-[200px] bg-darkYellow text-center text-[19px] font-bold shadow-md shadow-darkYellow"
           >

@@ -74,9 +74,9 @@ const Category = ({title , products , color }) => {
         onSwiper={(swiper) => console.log(swiper)}
         className="mt-[70px]  w-[355px] md:w-[600px] lg:w-[1100px] xl:w-[1500px]"
       >
-        {products.map((p)=>(
+        {products.map((p ,i)=>(
         <SwiperSlide>
-          <Item title={p.title} price={p.defaultProductVariant.price} img={p.defaultProductVariant.images} color={color}  slug={p?.slug?.current} />
+          <Item key={i} title={p.title} price={p.defaultProductVariant.price} img={p.defaultProductVariant.images} color={color}  slug={p?.slug?.current} />
         </SwiperSlide>
         ))}
    
