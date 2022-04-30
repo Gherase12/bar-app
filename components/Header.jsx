@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
-// import { IoCloseOutline } from 'react-icons/io'
+
 import { MdClose } from 'react-icons/md'
 import { BsCart2 } from 'react-icons/bs'
 import { useRouter } from 'next/router';

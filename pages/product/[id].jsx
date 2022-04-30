@@ -14,19 +14,7 @@ function product({ product }) {
   const dispatch = useDispatch()
   const router = useRouter()
   const cartItems = useSelector(selectCartItems)
-  // const product = {
-  //   name: "JACK DANIEL'S",
-
-  //   img: '/don-perignon.png',
-  //   description:
-  //     ' Born a clear whiskey the iconic spirit owes its rich colour to the charred oak barrels it matures in. The nose is very smooth with woody and a hint of a fruity undertone before the flavour launches into a mingling of caramel, vanilla and of course the signature notes of oak and fruit.Born a clear whiskey the iconic spirit owes its rich colour to the charred oak barrels it matures in. The nose is very smooth with woody and a hint of a fruity undertone before the flavour launches into a mingling of caramel, vanilla and of course the signature notes of oak and fruit.Born a clear whiskey the iconic spirit owes its rich colour to the charred oak barrels it matures in. The nose is very smooth with woody and a hint of a fruity undertone before the flavour launches into a mingling of caramel, vanilla and of course the signature notes of oak and fruit.',
-  //   rating: 5,
-  //   quantities: [
-  //     { vol: '500 ml', price: 16.25 },
-  //     { vol: '1L', price: 32.5 },
-  //     { vol: '1.5L', price: 42.5 },
-  //   ],
-  // }
+  
 
   
 

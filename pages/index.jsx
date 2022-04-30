@@ -1,18 +1,18 @@
 import { useRef, useEffect } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
+
 import { motion } from 'framer-motion'
 
-import { sanityClient, urlFor } from '../sanity'
+import { sanityClient} from '../sanity'
 import {
   BsInstagram,
   BsTwitter,
   BsFacebook,
-  BsFillArrowUpSquareFill,
+
 } from 'react-icons/bs'
 import Header from '../components/Header'
 import Category from '../components/Category'
-import { Products } from '../typings'
+
 
 const Home = ({ products }) => {
   const drinksRef = useRef < HTMLDivElement > null
