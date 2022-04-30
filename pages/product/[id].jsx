@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next'
+
 import React, { useState } from 'react'
 import { AiFillStar } from 'react-icons/ai'
 import { BsFillArrowLeftCircleFill , BsCart2} from 'react-icons/bs'
