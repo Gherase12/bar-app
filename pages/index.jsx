@@ -1,4 +1,3 @@
-import type { NextPage, GetServerSideProps } from 'next'
 import { useRef, useEffect } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -11,34 +10,25 @@ import {
   BsFacebook,
   BsFillArrowUpSquareFill,
 } from 'react-icons/bs'
-import Header from './../components/Header'
-import Category from './../components/Category'
+import Header from '../components/Header'
+import Category from '../components/Category'
 import { Products } from '../typings'
 
-interface Props {
-  products: Products[]
-}
-
-const Home = ({ products }: Props) => {
-  
-  
-
-  const drinksRef = useRef<HTMLDivElement>(null)
-  const aboutRef = useRef<HTMLDivElement>(null)
-  const contactRef = useRef<HTMLDivElement>(null)
-  const arrowRef = useRef<HTMLDivElement>(null)
+const Home = ({ products }) => {
+  const drinksRef = useRef < HTMLDivElement > null
+  const aboutRef = useRef < HTMLDivElement > null
+  const contactRef = useRef < HTMLDivElement > null
+  const arrowRef = useRef < HTMLDivElement > null
 
   const Categories = [
     { name: 'Wisky', color: '#8E8E20' },
     { name: 'Vodka', color: '#F60404' },
     { name: 'Gin', color: '#58A9E6' },
     { name: 'Champagne', color: '#F635F0' },
-    
   ]
-  
-  const getProducts = (name:string)=> products.filter((p)=> p.category[0] == name )
 
- 
+  const getProducts = (name) => products.filter((p) => p.category[0] == name)
+
   return (
     <motion.div
       initial="initial"
@@ -101,7 +91,12 @@ const Home = ({ products }: Props) => {
         </h1>
         <div>
           {Categories.map((c, i) => (
-            <Category key={i} title={c.name}  color={c.color} products={getProducts(c.name)}  />
+            <Category
+              key={i}
+              title={c.name}
+              color={c.color}
+              products={getProducts(c.name)}
+            />
           ))}
         </div>
       </div>
@@ -146,7 +141,7 @@ const Home = ({ products }: Props) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps = async () => {
   const query = `*[_type =="product" ]{
     title,
     slug{
