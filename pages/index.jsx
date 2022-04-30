@@ -3,22 +3,15 @@ import Head from 'next/head'
 
 import { motion } from 'framer-motion'
 
-import { sanityClient} from '../sanity'
-import {
-  BsInstagram,
-  BsTwitter,
-  BsFacebook,
-
-} from 'react-icons/bs'
+import { sanityClient } from '../sanity'
+import { BsInstagram, BsTwitter, BsFacebook } from 'react-icons/bs'
 import Header from '../components/Header'
 import Category from '../components/Category'
-
 
 const Home = ({ products }) => {
   const drinksRef = useRef(null)
   const aboutRef = useRef(null)
   const contactRef = useRef(null)
-  
 
   const Categories = [
     { name: 'Wisky', color: '#8E8E20' },
@@ -112,18 +105,26 @@ const Home = ({ products }) => {
           ABOUT US
         </h1>
         <p className="  my-[30px]  mx-auto h-[367px] w-[256px] overflow-scroll text-center text-darkYellow scrollbar-hide lg:h-[614px] lg:w-[930px] lg:text-[30px]">
-          Welcome to BAR STATION, your number one source for alcoholic
-          beverages. Founded in 2014 , Bar station has come a long way from its
-          beginnings in a [starting location, ie: home office, toolshed,
-          Houston, TX.]. When [store founder] first started out, his/her passion
-          for [passion of founder, ie: helping other parents be more
-          eco-friendly, providing the best equipment for his fellow musicians]
-          drove him to [action, ie: do intense research, quit her day job], and
-          gave him the impetus to turn hard work and inspiration into to a
-          booming online store. We now serve customers all over [place, ie: the
-          US, the world, the Austin area], and are thrilled to be a part of the
-          [adjective, ie: quirky, eco- friendly, fair trade] wing of the
-          [industry type, ie: fashion, baked goods, watches] industry.
+          DrinkBar is the online store that offers its customers a foray into
+          the world of varied flavors and unique experiences, thanks to an
+          extensive range of spirits, gin and champagne high quality. DrinkStore
+          is the online store of Alexandrion Group, a leader in the production
+          and distribution of wines and alcoholic beverages in Europe and since
+          2017 the only producer of single malt from the country. The DrinkStore
+          offer includes all categories of spirits and the most popular brands
+          in the world, such as Jack Daniel's, Johnnie Walker, Glenfiddich,
+          Absolut, Amuerte, Bottegea, Don Perignon and many more. Also through
+          DrinkStore, wine lovers can select their favorite champagne for any
+          occasion, thanks to the wide range of still and sparkling wines,
+          white, red and pink, suitable for all tastes, produced at The Iconic
+          Estate (Hyperion, Rhea, Thea, Kronos, Neptunus, White Stone Hill,
+          Byzantium, Prahova Valley, La Crama, Rhein Extra, Millennium etc), as
+          well as imported from famous international wineries, such as Concha Y
+          Toro, Bodegas Vega Sicilia, Trapiche, Villa Maria, Gancia, Bottega
+          etc. DrinkStore also welcomes those who looking for a special gift to
+          give to your loved ones, consistently in a variety of accessories for
+          serving alcoholic beverages, as well as sets that include a variety of
+          alcoholic beverages.
         </p>
       </motion.div>
 

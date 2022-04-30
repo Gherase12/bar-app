@@ -18,7 +18,7 @@ function cart() {
     <div className="relative h-screen overflow-hidden bg-black ">
       <BsFillArrowLeftCircleFill
         className="absolute top-[20px] left-[20px] text-[40px] text-darkYellow"
-        onClick={() => router.push('/')}
+        onClick={() => router.back()}
       />
       <h1 className="my-[65px] text-center text-[29px] text-darkYellow text-shadow-yellow lg:text-[40px] ">
         MY CART

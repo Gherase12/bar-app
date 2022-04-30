@@ -1,12 +1,14 @@
 import React from 'react'
 import { addToCart, removeFromCart } from '../redux/features/cart/cartSlice'
 import { useDispatch } from 'react-redux'
+import { motion } from 'framer-motion';
 
 function CartItem({ name, img, price, count, product }) {
   const dispatch = useDispatch()
   
   return (
-    <div className=" flex h-[80px] w-[285px] border-2  justify-around space-x-[35px] lg:w-[600px] lg:items-center lg:justify-around lg:border-b-2 lg:text-[25px] lg:text-darkYellow">
+    <div
+    className=" flex h-[80px] w-[285px]  justify-around space-x-[35px] lg:w-[600px] lg:items-center lg:justify-around lg:border-b-2 lg:text-[25px] lg:text-darkYellow">
       <div className="flex h-[79px] w-[62px] items-center justify-center rounded-lg border-2 border-darkYellow p-[6px] lg:h-[109px] lg:w-[92px] lg:border-none">
         <img src={img} alt={name} className="object-contain" />
       </div>

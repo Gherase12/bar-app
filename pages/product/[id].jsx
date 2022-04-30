@@ -64,7 +64,7 @@ function product({ product }) {
       </div>
       <BsFillArrowLeftCircleFill
         className="absolute top-[20px] left-[20px] text-[40px] text-darkYellow"
-        onClick={() => router.push('/')}
+        onClick={() => router.back()}
       />
       {/* phone screen */}
       <div className="mt-[80px] lg:hidden">
@@ -133,6 +133,11 @@ function product({ product }) {
         </motion.div>
         <div className="my-[56px] flex justify-center">
           <motion.button
+          whileTap={{
+            scale: 1.2,
+         
+          }}
+            onClick={()=>dispatch(addToCart(product))}
             variants={fadeInUp}
             className=" h-[41px] w-[160px] bg-darkYellow text-center text-[19px] font-bold shadow-md shadow-darkYellow"
           >
@@ -208,7 +213,10 @@ function product({ product }) {
            
           </motion.div>
           <motion.button
-          
+         whileTap={{
+          scale: 1.2,
+       
+        }}
             onClick={()=>dispatch(addToCart(product))}
             variants={fadeInUp}
             className=" h-[50px] w-[200px] bg-darkYellow text-center text-[19px] font-bold shadow-md shadow-darkYellow"

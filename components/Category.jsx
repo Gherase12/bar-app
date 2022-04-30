@@ -71,7 +71,7 @@ const Category = ({title , products , color }) => {
           },
         }}
         
-        className="mt-[70px]  w-[355px] md:w-[600px] lg:w-[1100px] xl:w-[1500px]"
+        className="mt-[70px]   w-[355px] md:w-[600px] lg:w-[1100px] xl:w-[1500px]"
       >
         {products.map((p ,i)=>(
         <SwiperSlide key={i}>

@@ -18,21 +18,18 @@ const Header = ({ drinksRef, aboutRef, contactRef }) => {
   }
   const router = useRouter()
   return (
-    <div className="relative z-20  flex h-[47px] w-full items-center justify-center bg-black/80 text-darkYellow shadow-lg shadow-darkYellow md:h-[125px] md:justify-between md:px-[40px] md:text-[29px]">
+    <div className="relative  z-20  flex h-[47px] w-full items-center justify-center bg-black/80 text-darkYellow shadow-lg shadow-darkYellow md:h-[125px] md:justify-between md:px-[40px] md:text-[29px]">
       <h1 className="md:text-[40px]">Drink bar</h1>
-      <div className="hidden space-x-4  md:flex xl:mr-[200px]">
+      <div className="hidden space-x-4 md:flex 2xl:ml-[800px]">
         <button onClick={() => scrollToElement(drinksRef)}>Drinks</button>
         <button onClick={() => scrollToElement(aboutRef)}>About Us</button>
         <button onClick={() => scrollToElement(contactRef)}>Find Us</button>
         <div className="relative">
-          <div>
           {cartItems.length != 0 && (
             <div className="absolute left-[25px] h-[15px] w-[15px] rounded-full bg-darkYellow text-center text-[10px] font-bold text-black">
               {cartItems?.length}
             </div>
           )}
-          </div>
-
           <BsCart2
             className=" mt-[5px] text-[30px] text-darkYellow "
             onClick={() => router.push('/cart')}
